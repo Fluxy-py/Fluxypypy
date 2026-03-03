@@ -48,7 +48,10 @@ export default function Contact() {
 
       if (!res.ok) throw new Error("Email delivery failed");
 
-      toast.success("Message sent! We'll be in touch within 24 hours.", );
+      toast.success("Message sent! We'll be in touch within 24 hours.", {
+        id: toastId, // Dismiss the loading toast
+        duration: 5000,
+      });
 
       setSubmitted(true);
       setFormData({ name: "", email: "", company: "", message: "" });
@@ -56,7 +59,7 @@ export default function Contact() {
     } catch (err) {
       console.error("Contact submission error:", err);
       toast.error("Something went wrong. Please try again.", {
-        id: toastId,
+        id: toastId, // Dismiss the loading toast
         description: "If the issue persists, email us at admin@fluxypy.com.",
         duration: 6000,
       });
@@ -104,9 +107,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Email</p>
-                      <p className="text-sm font-medium text-foreground">
+                      <a href="mailto:admin@fluxypy.com" className="text-sm font-medium text-foreground hover:text-primary">
                         admin@fluxypy.com
-                      </p>
+                      </a>
                     </div>
                   </div>
 
@@ -116,9 +119,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Phone</p>
-                      <p className="text-sm font-medium text-foreground">
+                      <a href="tel:+918957412046" className="text-sm font-medium text-foreground hover:text-primary">
                         +91 8957412046
-                      </p>
+                      </a>
                     </div>
                   </div>
 
@@ -128,9 +131,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Location</p>
-                      <p className="text-sm font-medium text-foreground">
+                      <a href="http://maps.google.com/?q=Jagat Farm, Greater Noida, Uttar Pradesh, India" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-foreground hover:text-primary">
                         Jagat Farm, Greater Noida, Uttar Pradesh, India
-                      </p>
+                      </a>
                     </div>
                   </div>
                 </div>

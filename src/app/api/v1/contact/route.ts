@@ -1,9 +1,13 @@
+export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const ADMIN_EMAIL = "admin@fluxypy.com";
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "noreply@fluxypy.com";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "noreply@contact.fluxypy.com";
+
+console.log("Using Resend API Key:", !!process.env.RESEND_API_KEY);
+console.log("Using Resend From Email:", FROM_EMAIL);
 
 export async function POST(req: NextRequest) {
   try {
@@ -43,22 +47,52 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
-      subject: "We've received your message — Fluxypy",
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:auto;">
-          <h2 style="color:#0ea5e9;">Hi ${name}, thanks for reaching out!</h2>
-          <p style="color:#6b7280;">We've received your message and will get back to you within <strong>24 hours</strong>.</p>
-          <div style="margin-top:24px;padding:16px;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
-            <p style="font-weight:600;color:#374151;margin:0 0 8px;">Your message</p>
-            <p style="color:#6b7280;white-space:pre-wrap;margin:0;">${message}</p>
-          </div>
-          <p style="margin-top:24px;color:#6b7280;">In the meantime, feel free to reply to this email if you have any additional details to share.</p>
-          <p style="color:#374151;margin-top:32px;">— The Fluxypy Team</p>
-          <hr style="margin-top:32px;border-color:#e5e7eb;" />
-          <p style="font-size:12px;color:#9ca3af;">Fluxypy · Jagat Farm, Greater Noida, Uttar Pradesh, India</p>
-        </div>
-      `,
-    });
+      subject:  "Confirmation: We received your message",
+      text: `
+        Hi ${name},
+
+        Thank you for contacting Fluxypy.
+
+        This is to confirm that we have received your message. 
+        Our team will review your inquiry and respond within 24 business hours.
+
+        For your reference, here is a copy of your message:
+
+        "${message}"
+
+        If you did not submit this request, please ignore this email.
+
+        Best regards,
+        Fluxypy Team
+        admin@fluxypy.com
+        Greater Noida, Uttar Pradesh, India
+          `,
+          html: `
+            <div style="font-family:Arial, sans-serif; max-width:600px; margin:auto; color:#333;">
+              <p>Hi ${name},</p>
+
+              <p>Thank you for contacting <strong>Fluxypy</strong>.</p>
+
+              <p>This email confirms that we have received your message. 
+              Our team will review your inquiry and respond within 
+              <strong>24 business hours</strong>.</p>
+
+              <div style="margin:20px 0; padding:15px; background:#f4f4f4; border-radius:6px;">
+                <p style="margin:0 0 8px;"><strong>Your message:</strong></p>
+                <p style="margin:0; white-space:pre-wrap;">${message}</p>
+              </div>
+
+              <p>If you did not submit this request, you may safely ignore this email.</p>
+
+              <p style="margin-top:30px;">
+                Best regards,<br/>
+                <strong>Fluxypy Team</strong><br/>
+                admin@fluxypy.com<br/>
+                Greater Noida, Uttar Pradesh, India
+              </p>
+            </div>
+          `,
+            });
 
     return NextResponse.json({ success: true });
   } catch (error) {
