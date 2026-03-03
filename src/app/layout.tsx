@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "startup tech partner",
   ],
   openGraph: {
-    title: "Fluxypy - Intelligent Digital Solutions",
+    title: "Fluxypy ",
     description:
       "AI-powered web development, automation, and SaaS products for modern businesses.",
     type: "website",

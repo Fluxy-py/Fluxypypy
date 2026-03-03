@@ -8,9 +8,9 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
+  { label: "Our Services", href: "#services" },
   { label: "Why Us", href: "#why-us" },
-  { label: "Portfolio", href: "#portfolio" },
+  // { label: "Portfolio", href: "#portfolio" },
   { label: "Process", href: "#process" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },

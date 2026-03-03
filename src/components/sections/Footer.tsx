@@ -2,34 +2,34 @@
 
 import { Separator } from "@/components/ui/separator";
 import { FadeIn } from "@/components/common/Animations";
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = {
   Company: [
-    { label: "About", href: "/" },
-    { label: "Careers", href: "/careers" },
-    { label: "Blog", href: "/blog" },
-    { label: "Press", href: "/press" },
+    { label: "About", href: "/about", comingSoon: true },
+    { label: "Careers", href: "/careers", comingSoon: true },
+    { label: "Blog", href: "/blog", comingSoon: true },
+    { label: "Press", href: "/press", comingSoon: true },
   ],
   Services: [
-    { label: "AI Solutions", href: "/services" },
-    { label: "Web Development", href: "/services" },
-    { label: "SaaS Development", href: "/services" },
-    { label: "Automation", href: "/services" },
+    { label: "AI Solutions", href: "/services", comingSoon: true },
+    { label: "Web Development", href: "/services", comingSoon: true },
+    { label: "SaaS Development", href: "/services", comingSoon: true },
+    { label: "Automation", href: "/services", comingSoon: true },
   ],
   Resources: [
-    { label: "Case Studies", href: "#portfolio" },
-    { label: "Documentation", href: "/documentation" },
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms of Service", href: "/terms-of-service" },
+    { label: "Case Studies", href: "#portfolio", comingSoon: true },
+    { label: "Documentation", href: "/documentation", comingSoon: true },
+    { label: "Privacy Policy", href: "/privacy-policy", comingSoon: true },
+    { label: "Terms of Service", href: "/terms-of-service", comingSoon: true },
   ],
 };
 
 const socials = [
   { icon: Twitter, href: "https://x.com/fluxypy", label: "Twitter" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/fluxypy/posts/?feedView=all", label: "LinkedIn" },
-  { icon: Github, href: "https://github.com/Fluxypy", label: "GitHub" },
+  { icon: Facebook, href: "https://www.facebook.com/people/Fluxypy/61552290568350", label: "Facebook" },
   {icon: Instagram, href: "https://www.instagram.com/fluxypy/", label: "Instagram"},
 ];
 
@@ -84,9 +84,11 @@ export default function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm text-muted-foreground transition-colors hover:text-[var(--brand-glow)]"
+                        className={`text-sm text-muted-foreground transition-colors hover:text-[var(--brand-glow)] ${
+                          link.comingSoon ? "pointer-events-none opacity-50" : ""
+                        }`}
                       >
-                        {link.label}
+                        {link.label} {link.comingSoon && <span>(Coming Soon)</span>}
                       </a>
                     </li>
                   ))}

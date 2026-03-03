@@ -61,7 +61,7 @@ export default function Hero() {
               size="lg"
               className="h-14 rounded-xl border-secondary bg-transparent px-8 text-base font-semibold text-foreground transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:text-[var(--brand-glow)]"
             >
-              <a href="#portfolio">View Our Work</a>
+              <a href="#services">Our Services</a>
             </Button>
           </div>
         </FadeIn>
