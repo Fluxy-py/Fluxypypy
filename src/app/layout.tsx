@@ -45,14 +45,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <meta name="google-site-verification" content="eBACRPJ7Y_0_UlzSa2Ca0g-XxPzHWfKL5IyVo7PFy5Y" />
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R31Q57ZR8G"></script>
-<script dangerouslySetInnerHTML={{ __html: `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){window.dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-R31Q57ZR8G');
-` }} />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-R31Q57ZR8G"></script>
+      <script dangerouslySetInnerHTML={{ __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R31Q57ZR8G');
+      ` }} />
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-background text-foreground`}
       >

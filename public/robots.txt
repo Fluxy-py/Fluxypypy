@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.fluxypy.com/
+
+# Sitemaps
+Sitemap: https://www.fluxypy.com/sitemap.xml
